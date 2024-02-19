@@ -9,6 +9,7 @@
 
             <div class="align-middle bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
 
+                <!-- Tabela para exibir os dados da DB -->
                 <table class="table-fixed border-separate border-spacing-x-8">
 
                     <thead>
@@ -19,6 +20,8 @@
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Description</th>
+
+                            <!-- última coluna usada para conter botões interagíveis -->
                             <th class="sm:flex sm:items-center sm:ms-48 hover:text-green-500">
                                 <a href="{{ route('product.create') }}">
                                     Adicionar Produto
@@ -29,6 +32,7 @@
                     </thead>
 
                     <tbody>
+                    <!-- Laço para buscar os dados da DB e exibir no corpo da tabela -->
                     @foreach($products as $product)
                         <tr>
 
@@ -39,6 +43,7 @@
                             <td>{{$product->description}}</td>
 
                             <td>
+                                <!-- Menu em dropdown para as opções de editar e excluir a linha em que se encontra -->
                                 <x-dropdown width="48">
                                     <x-slot name="trigger">
                                         <button class="inline-flex items-center px-5 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -58,7 +63,7 @@
                                             {{ __('Edit') }}
                                         </x-dropdown-link>
 
-
+                                        <!-- Form para excluir os dados com segurança CSRF -->
                                         <form method="post" action="{{ route('product.delete', ['product' => $product]) }}"
                                               onclick="event.preventDefault(); this.closest('form').submit();">
                                             @csrf

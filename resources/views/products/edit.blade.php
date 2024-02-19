@@ -1,29 +1,26 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Edit Product</h1>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Editar Produto') }}
+        </h2>
+    </x-slot>
     <div>
+        <!-- Retorna um idicador dos erros ao usuário -->
         @if($errors->any())
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>
-                    {{$error}}
-                </li>
-            @endforeach
-        </ul>
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>
+                        {{$error}}
+                    </li>
+                @endforeach
+            </ul>
         @endif
     </div>
-    <form method="post" action="{{ route('product.update', ['product' => $product]) }}">
+    <!-- Formulário para editar dados da DB -->
+    <form class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-8 text-center" method="post" action="{{route('product.update', ['product' => $product]) }}">
         @csrf
         @method('put')
-        <div>
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4 text-gray-900 dark:text-gray-100">
             <label>Name</label>
             <input type="text" name="name" placeholder="Name" value="{{$product->name}}" />
 
@@ -35,10 +32,11 @@
 
             <label>Description</label>
             <input type="text" name="description" placeholder="Description" value="{{$product->description}}" />
-        </div>
-        <div>
-            <input type="submit" value="Update Product" />
+
+            <!-- Confirmação dos dados para enviar -->
+            <button class="pt-4 font-bold hover:text-green-500">
+                <input type="submit" value="Atualizar Produto" />
+            </button>
         </div>
     </form>
-</body>
-</html>
+</x-app-layout>
