@@ -5,24 +5,23 @@
         </h6>
     @endif
     <div class="py-12">
-        <div class="text-right text-gray-900 dark:text-gray-100 max-w-4xl mx-auto sm:px-6 lg:px-8">
+        <div class="text-gray-900 dark:text-gray-100 max-w-4xl mx-auto sm:px-6 lg:px-8">
 
-            <div class="align-middle bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <div class="text-right align-middle bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
 
                 <!-- Tabela para exibir os dados da DB -->
-                <table class="table-fixed border-separate border-spacing-x-8">
+                <table class="border-separate border-spacing-x-8">
 
-                    <thead>
+                    <thead class="text-center">
                         <tr>
 
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Description</th>
+                            <th>Nome</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                            <th class="w-1/2">Descrição</th>
 
                             <!-- última coluna usada para conter botões interagíveis -->
-                            <th class="sm:flex sm:items-center sm:ms-48 hover:text-green-500">
+                            <th class="sm:flex sm:items-center hover:text-green-500">
                                 <a href="{{ route('product.create') }}">
                                     Adicionar Produto
                                 </a>
@@ -31,12 +30,11 @@
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody class="text-center">
                     <!-- Laço para buscar os dados da DB e exibir no corpo da tabela -->
                     @foreach($products as $product)
                         <tr>
 
-                            <th>{{$product->id}}</th>
                             <td>{{$product->name}}</td>
                             <td>{{$product->qty}}</td>
                             <td>{{$product->price}}</td>
@@ -47,7 +45,7 @@
                                 <x-dropdown width="48">
                                     <x-slot name="trigger">
                                         <button class="inline-flex items-center px-5 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                            <div>Options</div>
+                                            <div>Opções</div>
 
                                             <div class="ms-1">
                                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -60,7 +58,7 @@
                                     <x-slot name="content">
 
                                         <x-dropdown-link :href="route('product.edit', ['product' => $product])">
-                                            {{ __('Edit') }}
+                                            {{ __('Editar') }}
                                         </x-dropdown-link>
 
                                         <!-- Form para excluir os dados com segurança CSRF -->
@@ -69,7 +67,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <x-dropdown-link :href="route('product.delete', ['product' => $product])">
-                                                {{ __('Delete') }}
+                                                {{ __('Excluir') }}
                                             </x-dropdown-link>
                                         </form>
 

@@ -39,16 +39,16 @@ class ProductController extends Controller
             'name' => 'required',
             'qty' => 'required|numeric',
             'price' => 'required|decimal:2',
-            'description' => 'required',
+            'description' => 'required|max:20',
         ]);
 
         $product->update($data);
 
-        return redirect(route('product.index'))->with('success', 'Product Updated Successfully');
+        return redirect(route('product.index'))->with('success', 'Produto Atualizado com Sucesso');
     }
 
     public function delete(Product $product){
         $product->delete();
-        return redirect(route('product.index'))->with('success', 'Product Deleted Successfully');
+        return redirect(route('product.index'))->with('success', 'Produto Excluído com Sucesso');
     }
 }
