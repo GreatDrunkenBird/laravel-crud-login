@@ -34,7 +34,7 @@
             <input type="text" name="description" placeholder="Description" value="{{$product->description}}" />
 
             <!-- Confirmação dos dados para enviar -->
-            <button class="pt-4 font-bold hover:text-green-500">
+            <button class="ps-2 font-bold hover:text-green-500">
                 <input type="submit" value="Atualizar Produto" />
             </button>
         </div>

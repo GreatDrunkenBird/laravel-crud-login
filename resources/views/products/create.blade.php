@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Criar Produto') }}
+            {{ __('Adicionar Produto') }}
         </h2>
     </x-slot>
     <div>
@@ -34,7 +34,7 @@
             <input type="text" name="description" placeholder="Description" />
 
             <!-- Confirmação dos dados para enviar -->
-            <button class="ps-3 font-bold hover:text-green-500">
+            <button class="ps-5 font-bold hover:text-green-500">
                 <input type="submit" value="Salvar" />
             </button>
         </div>
